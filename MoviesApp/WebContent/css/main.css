@@ -1,0 +1,191 @@
+body{
+	margin:0 auto;
+	background-color:#ffffff;
+}
+
+a{
+	text-decoration: none;
+	color:#ffffff;
+}
+
+#addinfo{
+	color:#02902b;
+}
+
+#toplabel{
+	width:100%;
+	height:5vh;
+	text-align:center;
+	vertical-align:middle;
+	line-height:5vh;
+	background-color:#03a03c;
+	color:#ffffff;
+	font-size:3.5vh;
+}
+
+#leftnav{
+	float:left;
+	width:12%;
+	background-color:#25c15e;
+	height:95vh;
+}
+
+#navigation ul>li{
+	padding:0;
+	list-style-type:none;
+	width:100%;
+	display:block;
+	color:#dddddd;
+	font-size: 1.5vw;
+	margin-top:2vh;
+}
+
+#navigation ul{
+	margin:0 auto;
+	padding:0;
+	list-style-type:none;
+}
+
+#navigation li:hover { 
+	background-color:#03a03c; 
+}
+
+#navigation > ul>li>a>img{
+	width:50%;
+	display: block;
+	margin: 0 auto;
+}
+
+#navigation > ul>li>a>p{
+	display: block;
+	text-align:center;
+	margin: 0 auto;
+	margin-top:2vh;
+}
+
+#maincontainer{
+	float:left;
+	height:95vh;
+	width:88%;
+	text-align:center;
+	font-size:5vw;
+}
+
+#movielistcontainer{
+    clear: both;
+	height:95vh;
+	text-align:center;
+	font-size:5vw;
+    overflow: auto;
+}
+
+
+.moviepanel{
+	height: 200px; 
+	border-style: solid;
+    border-width: 0.1vh 0 0 0;
+    border-color: #bbbbbb;
+	background-color:#ffffff;
+}
+
+#movie_img{
+	height:170px; 
+	width: 25%;
+	margin:15px 0 0 40px;
+	float:left;
+}
+
+.moviepanel > p{
+	float:left;
+	height: 170px; 
+	margin:15px 0 15px 30px;
+	font-size:2vw;
+	text-align:left;
+	vertical-align:middle;
+	line-height:170px;
+	color:#000000;
+}
+
+.moviepanel:hover{
+	background-color:#eeeeee;
+}
+
+
+#videoscreen{
+	height: 60%;
+}
+
+
+#videodescription{
+	margin:0 auto;
+	font-size:2.5vw;
+	margin-left:5vw;
+	margin-top:6vh;
+}
+
+#movievideo{
+	height:90%;
+	margin-top:3vh;
+}
+
+
+
+
+#videoscreen{
+	height: 60%;
+}
+
+
+#videodescription{
+	margin:0 auto;
+	font-size:2.5vw;
+	margin-left:5vw;
+	margin-top:6vh;
+}
+
+#movievideo{
+	height:90%;
+	margin-top:3vh;
+}
+
+
+
+
+#container{
+	width:50vw;
+	margin:0 0 0 0 auto;
+	padding:5vh;
+	margin-top:10vh;
+}
+
+.labelstyle{
+	display:inline-block;
+	width:20vw;
+	margin-bottom:2vh;
+	margin-left:8vw;
+	font-size:2vw;
+}
+
+
+.inputstyle{
+	display:inline-block;
+	width:19vw;
+	height:2.5vh;
+	padding-left:0.8vw;
+}
+
+
+.buttoncontainer > input{
+	display:inline-block;
+	width:12vw;
+	margin-left:20vw;
+}
+
+input:focus {
+    outline:none !important;
+}
+
+
+
+
+
