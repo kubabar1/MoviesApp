@@ -37,6 +37,10 @@ Po dodaniu filmu wyświetla się następująca strona
 Po dodaniu nowego filmu zostanie on umieszczony na stałe w folderze */uploads* na komputerze, a następnie będzie mógł on być wyświetlany na 
 liście filmów.
 
+Ponadto strona została zaprojektowana w sposób responsywny, dzięki czemu może być bez problemu wygodnie wyświetlana na urządzeniach moblinych.
+
+![alt text](https://github.com/kubabar1/MoviesApp/blob/master/readme_images/responsive_view.png "Responsywność")
+
 
 # 4. Opis danych dostarczanych podczas dodawania nowego filmu
 
@@ -59,7 +63,7 @@ Diagram modułów
 Diagram pakietów
 
 
-# 6. Opis modułów
+# 6. Opis modułów 
 ## 6.1. controllers
 ### 6.1.1.MovieAddRestController
 Klasa ta jest kontolerem odpowiedzialnym za dodawanie filmów. Jest ona również odpowiedzialna za wyświetlanie formularza 
