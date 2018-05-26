@@ -46,11 +46,7 @@ Ponadto strona została zaprojektowana w sposób responsywny, dzięki czemu moż
 
 ![alt text](https://github.com/kubabar1/MoviesApp/blob/master/readme_images/add_movie_view.png "Dodawanie filmu")
 
-Dodając nowy film należy podać nazwę filmu, nazwę autora, wybrać z listy gatunek filmu, wpisać rok produkcji oraz wybrać plik zawierający 
-film który chcemy dodać. Nazwa filmu i autor powinny być ciągami znaków, natomiast rok produkcji powinien być liczbą. Podane dane są
-zapisywane w pliku XML *movie_db.xml* znajdującym się w katalogu src.models. Dane z tego pliku są ładowane do listy filmów po wejściu na
-stronę */MoviesApp/movies*. Dodany plik jest zapisywany w folderze /uploads znajdującym się na komputerze. Jeżeli taki folder nie 
-istnieje, zostaje on utworzony automatycznie podczas dodawania pierwszego filmu. 
+Dodając nowy film należy podać nazwę filmu, nazwę autora, wybrać z listy gatunek filmu, wpisać rok produkcji oraz wybrać plik zawierający film który chcemy dodać. Nazwa filmu i autor powinny być ciągami znaków, natomiast rok produkcji powinien być liczbą. Podane dane są umieszczane w bazie danych MySQL *movies_db* , w tabeli *Movies* . Do mapowania danych z realzcyjnej bazy danych na świat obiektowy - klasy - wykorzystywany jest framework Hibernate. Dodany plik jest zapisywany w folderze /uploads znajdującym się na komputerze. Jeżeli taki folder nie istnieje, zostaje on utworzony automatycznie podczas dodawania pierwszego filmu. 
 
 
 # 5. Uproszczony diagram modułów i pakietów
@@ -86,26 +82,25 @@ Klasa ta jest kontrolerem odpowiedzialnym za wyświetlanie listy filmów.<br/><b
 **Metody:**<br/>
 – public String getMovie(Model model) - metoda ta służy do wyświetlenia listy filmów<br/>
 
-### 6.1.4. Movie
-Klasa ta zawiera pola opisujące dodawany film oraz metody dostępowe.<br/><br/>
+## 6.2 models
+### 6.2.1. Movie
+Klasa ta zawiera pola opisujące dodawany film oraz metody dostępowe. Jest ona encją - reprezentacją tabeli *Movies* znajdującej się w bazie danych.<br/><br/>
 **Metody:**<br/>
 Klasa ta zawiera wyłącznie metody dostępowe.<br/>
 
-### 6.1.5. MoviesList
-Klasa ta zawiera listę filmów.<br/><br/>
+## 6.3 dao
+### 6.3.1. MovieDaoInterface
+Interfejs ten zawiera metody jakie powinna posiadać klasa wykorzystywana do komunikacji z bazą danych z tabelą *Movies*.<br/><br/>
 **Metody:**<br/>
-– private void loadMovies()  - metoda ta załadowuje do listy filmów *ArrayList* obiekty klasy *Movies*, na podstawie pliku 
-*movies_db.xml*,<br/>
-– public Movie getMovie(String id) - metoda ta zwraca obiekt klasy *Movies* z listy filmów *ArrayList* o podanym *id*, <br/>
-– public void addMovie(Movie movie) - metoda ta służy do dodawania właściwości nowego filmu do pliku *movies_db.xml*<br/>
+– public void addMovie(Movie movie) - dodaje do bazy danych nowy film,<br/>
+– public List<Movie> getAllMovies() - pobiera wszystkie filmy z bazy danych i zwraca je w formie listy filmów,<br/>
+– public Movie getMovieById(String id) - pobiera jeden film na podstawie podanego nr ID<br/>
+
+### 6.3.2. MovieDao
+Klasa ta jest encją, reprezentującą tabelę *Movies* z bazy danych *movies_db*.<br/>
 
 # 7. Opis struktur i wzorców projektowych
-## 7.1 Struktury:
-**ArrayList** - struktura danych w której elementy są ułożone w liniowym porządku. W programie jest wykorzystywana do przechowywania
-wczytanych z pliku *movies_db.xml* właściwości poszczególnych filmów - obiektów klasy *Movies*. Obiekty są ładowane do listy po każdym
-wejściu na adres /MoviesApp/movies, przy użyciu metody *loadMovies()* znajdującej się w klasie *MoviesList*.
-
-## 7.2 Wzorce projektowe:
+## 7.1 Wzorce projektowe:
 **MVC** - ModelViewController, wzorzec projektowy organizujący strukturę aplikacji posiadających graficzny interfejs użytkownika. Wzorzec
 MVC zakłada podział aplikacji na 3 części: *model* - reprezentacja problemu/logiki aplikacji, *view* - opisuje jak wyświetlić część
 modelu w ramach interfejsu użytkownika ,*controller*- przyjmuje od użytkownika dane wejściowe, aktualizuje model, odświeża widok. Klasy 
