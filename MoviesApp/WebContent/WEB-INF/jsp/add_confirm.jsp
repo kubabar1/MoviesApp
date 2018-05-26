@@ -21,7 +21,7 @@
 </head>
 <body>
 	<header>
-	<div id="toplabel">MOVIE LIST</div>
+	<div id="toplabel">MOVIE ADD</div>
 	</header>
 
 	<nav>
