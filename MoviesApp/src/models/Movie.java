@@ -1,11 +1,28 @@
 package models;
 
-public class Movie {
+import java.io.Serializable;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "movies")
+public class Movie implements Serializable {
+	@Id
+	@Column(name = "ID")
 	private String id;
+
+	@Column(name = "name")
 	private String name;
+
+	@Column(name = "author")
 	private String author;
+
+	@Column(name = "genre")
 	private String genre;
+
+	@Column(name = "productionYear")
 	private int productionYear;
+
+	@Column(name = "filename")
 	private String filename;
 
 	public Movie() {

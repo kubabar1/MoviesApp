@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,26 +14,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import dao.MovieDao;
 import models.Movie;
-import models.MoviesList;
 
 @Controller
 public class MovieAddRestController {
-	private MoviesList moviesList;
+	
+	@Autowired
+	private MovieDao movieDao;
 
-	public void setMoviesList(MoviesList moviesList) {
-		this.moviesList = moviesList;
+	public MovieDao getMovieDao() {
+		return movieDao;
 	}
 
-	public MoviesList getMoviesList() {
-		return moviesList;
+	public void setMovieDao(MovieDao movieDao) {
+		this.movieDao = movieDao;
 	}
 
 	@RequestMapping(value = "/add_movie", method = RequestMethod.GET)
 	public String showForm(Model model) {
-
 		return "movie_add";
-
 	}
 
 	@RequestMapping(value = "/add_movie", method = RequestMethod.POST, consumes = { "multipart/form-data" })
@@ -67,7 +68,7 @@ public class MovieAddRestController {
 			stream.close();
 
 			Movie m = new Movie(uuid.toString(), name, author, genre, productionYear, filename);
-			moviesList.addMovie(m);
+			movieDao.addMovie(m);
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

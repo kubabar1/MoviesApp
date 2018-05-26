@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,30 +11,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import dao.MovieDao;
 import models.Movie;
-import models.MoviesList;
 
 @Controller
 public class MoviesListRestController {
 
-	private MoviesList moviesList;
+	@Autowired
+	private MovieDao movieDao;
 
-	public void setMoviesList(MoviesList moviesList) {
-		this.moviesList = moviesList;
+	public MovieDao getMovieDao() {
+		return movieDao;
 	}
 
-	public MoviesList getMoviesList() {
-		return moviesList;
+	public void setMovieDao(MovieDao movieDao) {
+		this.movieDao = movieDao;
 	}
 
-	
 	@RequestMapping(value = "/movies", method = RequestMethod.GET)
 	public String getMovie(Model model) {
 
-		ArrayList<Movie> lm = moviesList.getListMovies();
-		
-		model.addAttribute("moviesList", lm);
+		List<Movie> lm = movieDao.getAllMovies();
 
+		model.addAttribute("moviesList", lm);
 
 		return "movie_list";
 
